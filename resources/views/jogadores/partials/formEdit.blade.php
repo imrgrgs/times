@@ -53,7 +53,7 @@
   <div class="col-md-2">
     <div class="form-group has-feedback {{ $errors->has('birthday') ? 'has-error' : '' }}">
       <label for="birthday">{{ __('adminlte::adminlte.birthday') }}</label>
-      <input type="text" class="form-control" id="birthday" name="birthday" value="{{ old('birthday',$jogador->birthday) }}">
+      <input type="text" class="form-control" id="birthday" name="birthday" value="{{ old('birthday',$jogador->birthdayFormatted) }}">
       @if ($errors->has('birthday'))
       <span class="help-block">
       {{ $errors->first('birthday') }}

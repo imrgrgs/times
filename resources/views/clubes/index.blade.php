@@ -15,7 +15,10 @@
             </div>
             <div>
                 <a style="margin: 19px;" href="{{ route('clubes.create')}}" class="btn btn-primary">{{ trans('adminlte::adminlte.new') }}</a>
-            </div>  
+
+                <a style="margin: 19px;" href="{{action('User\ClubesController@exportExcel')}}" class="btn btn-primary">Gerar Excel</a>
+                <a style="margin: 19px;" href="{{action('User\ClubesController@exportCsv')}}" class="btn btn-primary">Gerar CSV</a>
+              </div>  
             <!-- /.box-header -->
             <div class="box-body">
                 @if(session()->get('success'))
@@ -37,6 +40,7 @@
                   <th>{{ trans('adminlte::adminlte.city') }}</th>
                   
                   <th colspan = 2>{{ trans('adminlte::adminlte.action') }}</th>
+
                 </tr>
                 </thead>
                 <tbody>

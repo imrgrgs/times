@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Exports\JogadoresExport;
 use App\Http\Controllers\Controller;
 use App\Models\Clube;
 use App\Models\Estado;
 use App\Models\Jogador;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class JogadoresController extends Controller
 {
@@ -181,5 +183,15 @@ class JogadoresController extends Controller
         $jogador->delete();
         return redirect('/jogadores')->with('success', 'Jogador deleted!');
 
+    }
+
+    public function exportExcel()
+    {
+        return Excel::download(new JogadoresExport, 'jogadores.xlsx');
+    }
+
+    public function exportCsv()
+    {
+        return Excel::download(new JogadoresExport, 'jogadores.csv');
     }
 }

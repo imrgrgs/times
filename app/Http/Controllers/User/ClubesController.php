@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Exports\ClubesExport;
 use App\Http\Controllers\Controller;
 use App\Models\Clube;
 use App\Models\Estado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ClubesController extends Controller
 {
@@ -18,7 +20,7 @@ class ClubesController extends Controller
     public function index()
     {
         $clubes = Clube::where('user_id', '=', Auth::user()->id)->orderBy('full_name')->paginate(10);
-        
+
         return view('clubes.index', compact('clubes'));
     }
 
@@ -107,7 +109,7 @@ class ClubesController extends Controller
                 $estadosH[] = '<option value="' . $estado->id . '">' . $estado->sigla . '-' . $estado->estado . '</option>';
 
             }
-            
+
         }
         $estadosHTML = $estadosH;
 //dd(compact('estadosHTML', 'estados', 'divisoes'));
@@ -174,5 +176,15 @@ class ClubesController extends Controller
         $clube->delete();
         return redirect('/clubes')->with('success', 'Clube deleted!');
 
+    }
+
+    public function exportExcel()
+    {
+        return Excel::download(new ClubesExport, 'clubes.xlsx');
+    }
+
+    public function exportCsv()
+    {
+        return Excel::download(new ClubesExport, 'clubes.csv');
     }
 }

@@ -26,3 +26,9 @@ Route::resource('clubes', 'User\ClubesController');
 Route::resource('jogadores', 'User\JogadoresController');
 Route::resource('cidades', 'Geo\CidadesController');
 Route::get('cidadesByEstado/{idEstado}', 'Geo\CidadesController@cidadesByEstado');
+Route::get('exportExcel', 'User\ClubesController@exportExcel');
+Route::get('exportCsv', 'User\ClubesController@exportCsv');
+
+Route::get('jogadoresexportExcel', 'User\JogadoresController@exportExcel');
+Route::get('jogadoresexportCsv', 'User\JogadoresController@exportCsv');
+

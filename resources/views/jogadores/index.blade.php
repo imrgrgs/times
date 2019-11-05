@@ -15,6 +15,8 @@
             </div>
             <div>
                 <a style="margin: 19px;" href="{{ route('jogadores.create')}}" class="btn btn-primary">{{ trans('adminlte::adminlte.new') }}</a>
+                <a style="margin: 19px;" href="{{action('User\JogadoresController@exportExcel')}}" class="btn btn-primary">Gerar Excel</a>
+                <a style="margin: 19px;" href="{{action('User\JogadoresController@exportCsv')}}" class="btn btn-primary">Gerar CSV</a>
             </div>  
             <!-- /.box-header -->
             <div class="box-body">
