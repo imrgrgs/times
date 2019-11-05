@@ -13,12 +13,12 @@
 * Ou download o [zip file](https://github.com/imrgrgs/times/archive/master.zip)
 
 * Copie o arquivo .env.example para .env .
-* Crie o database
+* Crie o database MySql com o nome desejado.
 * No arquivo .env altere as diretivas
 
 
 ```
-DB_DATABASE=your_db_name
+DB_DATABASE=your_db_name = nome que você criou o database
 DB_USERNAME=your_db_user
 DB_PASSWORD=your_password
 ```
