@@ -6,10 +6,10 @@ use App\Exports\ClubesExport;
 use App\Http\Controllers\Controller;
 use App\Models\Clube;
 use App\Models\Estado;
-use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class ClubesController extends Controller
 {
@@ -194,6 +194,6 @@ class ClubesController extends Controller
         $clube = Clube::find($id);
         $pdf = PDF::loadView('clubes.pdf', compact('clube'));
 
-        return $pdf->download('clube.pdf');
+        return $pdf->download('clube' . $clube->id . '.pdf');
     }
 }
