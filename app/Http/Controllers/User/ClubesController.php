@@ -6,6 +6,7 @@ use App\Exports\ClubesExport;
 use App\Http\Controllers\Controller;
 use App\Models\Clube;
 use App\Models\Estado;
+use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
@@ -186,5 +187,13 @@ class ClubesController extends Controller
     public function exportCsv()
     {
         return Excel::download(new ClubesExport, 'clubes.csv');
+    }
+
+    public function downloadPDF($id)
+    {
+        $clube = Clube::find($id);
+        $pdf = PDF::loadView('clubes.pdf', compact('clube'));
+
+        return $pdf->download('clube.pdf');
     }
 }

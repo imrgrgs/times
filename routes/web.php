@@ -29,6 +29,9 @@ Route::get('cidadesByEstado/{idEstado}', 'Geo\CidadesController@cidadesByEstado'
 Route::get('exportExcel', 'User\ClubesController@exportExcel');
 Route::get('exportCsv', 'User\ClubesController@exportCsv');
 
+Route::get('clubes/downloadPDF/{id}','User\ClubesController@downloadPDF');
+Route::get('jogadores/downloadPDF/{id}','User\JogadoresController@downloadPDF');
+
 Route::get('jogadoresexportExcel', 'User\JogadoresController@exportExcel');
 Route::get('jogadoresexportCsv', 'User\JogadoresController@exportCsv');
 

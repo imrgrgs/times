@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Clube;
 use App\Models\Estado;
 use App\Models\Jogador;
+use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
@@ -193,5 +194,13 @@ class JogadoresController extends Controller
     public function exportCsv()
     {
         return Excel::download(new JogadoresExport, 'jogadores.csv');
+    }
+
+    public function downloadPDF($id)
+    {
+        $jogador = Jogador::find($id);
+        $pdf = PDF::loadView('jogadores.pdf', compact('jogador'));
+
+        return $pdf->download('jogador.pdf');
     }
 }

@@ -41,7 +41,7 @@
                   <th>{{ trans('adminlte::adminlte.state') }}</th>
                   <th>{{ trans('adminlte::adminlte.city') }}</th>
                   
-                  <th colspan = 2>{{ trans('adminlte::adminlte.action') }}</th>
+                  <th colspan = 3>{{ trans('adminlte::adminlte.action') }}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -66,6 +66,8 @@
                                   <button class="btn btn-danger btn-sm" type="submit">{{ trans('adminlte::adminlte.delete') }}</button>
                                 </form>
                             </td>
+                            <td><a href="{{action('User\JogadoresController@downloadPDF', $jogador->id)}}">Download PDF</a></td>
+
                         </tr>
                         @endforeach
                         {{ $jogadores->links() }}
